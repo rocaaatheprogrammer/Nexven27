@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROMO NEXVEN27</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #dfdee0e5;
+}
+
+.textointermedio {
+    text-align: center;
+    color: black;
+    font-size: 150%;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #4d289b; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    color: white;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: gold;
+}
+
+.carousel {
+    position: relative;
+    width: 100%; 
+    height: 90vh; 
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cubre todo sin deformarse */
+    display: none;
+    filter: brightness(1.25); /* MÁS BRILLO */
+}
+
+.carousel img.active {
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+    background-color: gold;
+}
+
+
+.section {
+    padding: 60px 40px;
+}
+
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.about-text p {
+    font-size: 20px;
+}
+
+.about-text li {
+    font-size: 18px;
+}
+
+/* PREMIOS */
+#premios {
+    background: white;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* EFECTO FOTOGRAFÍA */
+.card {
+    width: 220px;
+    height: 260px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    transform: rotate(-2deg);
+    transition: 0.3s;
+    position: relative;
+}
+
+.card:nth-child(2) { transform: rotate(2deg); }
+.card:nth-child(3) { transform: rotate(-3deg); }
+.card:nth-child(4) { transform: rotate(3deg); }
+
+.card:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .card-text {
+    opacity: 1;
+}
+
+/* VALORES */
+.valores-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.valores-texto {
+    font-size: 18px;
+}
+
+.valores-lista {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.valor-item {
+    background: #f4f4f4;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.top-secret-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4d289b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.top-secret-btn:hover {
+    background-color: #6a3fcf;
+    transform: scale(1.05);
+}
+
+.vision {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.vision img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.vision-text {
+    width: 50%;
+    font-size: 18px;
+}
+
+
+.anuario-text {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.anuario-galeria {
+    position: relative;
+    height: 600px;
+}
+
+.foto {
+    position: absolute;
+    width: 180px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.3);
+    transform: rotate(-3deg);
+    transition: 0.3s;
+}
+
+.foto img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    filter: brightness(1.15);
+}
+
+.foto p {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.foto:nth-child(2){ transform: rotate(4deg); }
+.foto:nth-child(3){ transform: rotate(-5deg); }
+.foto:nth-child(4){ transform: rotate(3deg); }
+.foto:nth-child(5){ transform: rotate(-2deg); }
+.foto:nth-child(6){ transform: rotate(5deg); }
+.foto:nth-child(7){ transform: rotate(-4deg); }
+
+.foto:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+}
+
+
+.box {
+    background: white;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h1>PROMOCION NEXVEN27</h1>
+    <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#datos">Datos</a></li>
+        <li><a href="#premios">Premios</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#vision">Visión</a></li>
+        <li><a href="#anuario">Anuario</a></li>
+    </ul>
+</nav>
+
+<!-- INICIO -->
+<section id="inicio" class="section">
+    <div class="carousel">
+        <button class="prev" onclick="cambiarImagen(-1)">❮</button>
+
+        <img src="imagenprom1.jpeg" class="active">
+        <img src="imagenprom2.jpeg">
+        <img src="LOGO.jpg">
+
+        <button class="next" onclick="cambiarImagen(1)">❯</button>
+    </div>
+</section>
+
+<div class="textointermedio">
+    <h1><b>NEXVEN27 la mejor promo de Maria Goretti</b></h1>
+</div>
+
+
+<section id="datos" class="section">
+    <div class="about">
+        <img src="takeonme.jpeg">
+
+        <div class="about-text">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                Somos la promoción NEXVEN27, un grupo unido de estudiantes comprometidos
+                con el crecimiento académico y personal.
+            </p>
+
+            <ul>
+                <li>✔ Compañerismo</li>
+                <li>✔ Respeto</li>
+                <li>✔ Responsabilidad</li>
+                <li>✔ Unión</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section id="premios" class="section">
+    <h2 style="text-align:center;">Premios</h2>
+
+    <div class="cards">
+        <div class="card">
+            <img src="futsal.jpeg">
+            <div class="card-text">Campeonato de Futsal 🏆</div>
+        </div>
+
+        <div class="card">
+            <img src="danzas.jpeg">
+            <div class="card-text">Concurso de Danzas 💃</div>
+        </div>
+
+        <div class="card">
+            <img src="teatro.jpeg">
+            <div class="card-text">Teatro 🎭</div>
+        </div>
+
+        <div class="card">
+            <img src="arteees.jpeg">
+            <div class="card-text">Concurso de Arte 🎨</div>
+        </div>
+    </div>
+</section>
+
+
+<section id="valores" class="section">
+    <div class="box">
+        <h2 style="text-align:center;">Nuestros Valores</h2>
+
+        <div class="valores-container">
+            <p class="valores-texto">
+               La promoción <b>NEXVEN27</b> se caracteriza por su excelente comportamiento, respeto hacia docentes y compañeros, y compromiso con cada actividad escolar. Nos destacamos por ser un curso unido, responsable y disciplinado, siempre dando lo mejor de nosotros tanto en lo académico como en lo personal.
+            </p>
+
+            <div class="valores-lista">
+                <div class="valor-item">✔ Respeto</div>
+                <div class="valor-item">✔ Responsabilidad</div>
+                <div class="valor-item">✔ Compañerismo</div>
+                <div class="valor-item">✔ Disciplina</div>
+                <div class="valor-item">✔ Honestidad</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="section">
+    <div class="box">
+        <div class="vision">
+            <img src="VISION.jpeg">
+
+            <div class="vision-text">
+                <h2>Nuestra Visión</h2>
+                <p>
+                    Como promoción <b>NEXVEN27</b>, aspiramos a ser un grupo que deje huella en nuestra institución, destacándonos por nuestra excelencia académica, valores sólidos y unidad. Buscamos ser recordados como una promoción ejemplar que logró sus metas con esfuerzo, compromiso y trabajo en equipo.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="anuario" class="section">
+    <div class="box">
+        <h2 style="text-align:center;">Anuario</h2>
+
+        <p class="anuario-text">
+            Aquí algunos de nuestros mejores momentos como promoción <b>NEXVEN27</b> 📸
+        </p>
+
+        <div class="anuario-galeria">
+
+            <div class="foto" style="top:20px; left:50px;">
+                <img src="Feria empresarial.jpeg">
+                <p>Feria Empresarial</p>
+            </div>
+
+            <div class="foto" style="top:100px; left:250px;">
+                <img src="Misa.jpeg">
+                <p>Misa ✝️✝️</p>
+            </div>
+
+            <div class="foto" style="top:50px; left:450px;">
+                <img src="mini nexveeen.png">
+                <p>Mini Nexven 👶</p>
+            </div>
+
+            <div class="foto" style="top:250px; left:100px;">
+                <img src="Teatrito.jpeg">
+                <p>Teatrooo</p>
+            </div>
+
+            <div class="foto" style="top:300px; left:350px;">
+                <img src="mejor profe.jpeg">
+                <p>El Mejor Profe</p>
+            </div>
+
+            <div class="foto" style="top:200px; left:600px;">
+                <img src="desfile.jpeg">
+                <p>Mascota</p>
+            </div>
+
+            <div class="foto" style="top:400px; left:200px;">
+                <img src="LOGO.jpg">
+                <p>NEXVEN27</p>
+            </div>
+<a href="https://www.instagram.com/nexven_/" class="top-secret-btn">🔒 Top Secret</a>
+        </div>
+    </div>
+</section>
+<footer family="Arial"
+style="color:purple "><b>GRACIAS POR SU ATENCION (45)</b></footer>
+<script>
+let index = 0;
+const imagenes = document.querySelectorAll(".carousel img");
+
+function mostrarImagen(i) {
+    imagenes.forEach(img => img.classList.remove("active"));
+    imagenes[i].classList.add("active");
+}
+
+function cambiarImagen(direccion) {
+    index += direccion;
+
+    if (index < 0) index = imagenes.length - 1;
+    if (index >= imagenes.length) index = 0;
+
+    mostrarImagen(index);
+}
+</script>
+
+</body>
+</html>
